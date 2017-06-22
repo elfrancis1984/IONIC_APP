@@ -29,7 +29,7 @@ import {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      backButtonText: 'Atras'
+      backButtonText: 'Atrás'
     })
   ],
   bootstrap: [IonicApp],
