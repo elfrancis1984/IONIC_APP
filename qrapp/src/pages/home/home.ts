@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-//Pliugin
+//Plugin
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 //Componentes
@@ -26,7 +26,18 @@ export class HomePage {
     console.log("Realizando scan");
 
     if(!this.platform.is('cordova')){
-      this.historialProvider.agregar_historial("http://www.google.com");
+      //this.historialProvider.agregar_historial("http://www.google.com");
+      //this.historialProvider.agregar_historial("geo:-0.18445118868671778,-78.48180714454958");
+      this.historialProvider.agregar_historial( `BEGIN:VCARD
+VERSION:2.1
+N:Kent;Clark
+FN:Clark Kent
+ORG:
+TEL;HOME;VOICE:12345
+TEL;TYPE=cell:67890
+ADR;TYPE=work:;;;
+EMAIL:clark@superman.com
+END:VCARD` );
       return;
     }
     this.barcodeScanner.scan().then((barcodeData) => {
