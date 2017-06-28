@@ -6,24 +6,43 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SubirPage } from '../pages/subir/subir';
+
+//Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { firebaseConfig} from "../config/firebase.config";
+import { PlaceholderPipe } from '../pipes/placeholder/placeholder';
+
+//Plugins
+import { Camera } from '@ionic-native/camera'
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SubirPage,
+    PlaceholderPipe
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SubirPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
