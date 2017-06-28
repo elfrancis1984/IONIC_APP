@@ -11,6 +11,8 @@ export class ScanData{
         this.tipo = "mapa";
     }else if(texto.startsWith("BEGIN:VCARD")){
         this.tipo = "contacto";
+    }else if(texto.startsWith("MATMSG")){
+        this.tipo = "email";
     }
   }
 }
