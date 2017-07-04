@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let post of posts | async">
+  <ion-card *ngFor="let post of _cap.imagenes">
     <img [src]="post.img">
     <ion-card-content>
       <ion-card-title>

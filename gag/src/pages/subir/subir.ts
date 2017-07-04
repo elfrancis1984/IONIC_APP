@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { ViewController, ToastController, Platform } from "ionic-angular";
+import { ViewController, ToastController, Platform, LoadingController } from "ionic-angular";
 
 //Plugins
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
+
+//Providers
+import { CargarArchivosProvider} from "../../providers/cargar-archivos/cargar-archivos";
 
 
 @Component({
@@ -18,9 +21,11 @@ export class SubirPage {
 
   constructor(private viewCtrl:ViewController,
               private toastCtrl:ToastController,
+              private loadingCtrl: LoadingController,
               private platform:Platform,
               private camera: Camera,
-              private imagePicker: ImagePicker) {}
+              private imagePicker: ImagePicker,
+              private _cap: CargarArchivosProvider) {}
 
   cerrar_modal(){
     this.viewCtrl.dismiss();
@@ -77,6 +82,31 @@ export class SubirPage {
       console.error("Error al seleccionar", JSON.stringify(err));
      });
 
+  }
+
+  crear_post(){
+    console.log("Subiendo imagen...");
+    let archivo = {
+      'titulo': this.titulo,
+      'img': this.img
+    };
+
+    let loader = this.loadingCtrl.create({
+      content: "Subiendo..."
+    });
+    loader.present();
+
+    this._cap.cargar_imagenes_firebase(archivo).then(
+      ()=>{
+        loader.dismiss();
+        this.cerrar_modal();
+      },
+      (error)=>{
+        loader.dismiss();
+        console.log("Error al cargar", JSON.stringify(error));
+        this.mostrar_toast("Error al cargar: "+ error);
+      }
+    );
   }
 
   private mostrar_toast(texto:string){
