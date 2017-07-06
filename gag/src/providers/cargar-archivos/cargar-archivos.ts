@@ -24,9 +24,9 @@ export class CargarArchivosProvider {
           endAt: this.lastKey
         }
       }).subscribe(posts => {
-        /*if(this.lastKey){
+        if(this.lastKey){
           posts.pop();
-        }*/
+        }
         if(posts.length == 0){
           console.log("Ya no existe registros");
           this.mostrar_toast("Ya no existe registros");
@@ -34,7 +34,7 @@ export class CargarArchivosProvider {
           return;
         }
         this.lastKey = posts[0].$key;
-        for(let i = posts.length;i>=0;i--){
+        for(let i = (posts.length - 1);i>=0;i--){
           let post = posts[i];
           this.imagenes.push(post);
         }

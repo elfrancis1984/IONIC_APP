@@ -28,6 +28,7 @@
         "@ionic/storage": "2.0.1",
         "ImagePicker": "git+https://github.com/dhavalsoni2001/ImagePicker.git",
         "angularfire2": "^4.0.0-rc.1",
+        "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.1.0",
@@ -43,8 +44,7 @@
         "ionicons": "3.0.0",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.12",
-        "com.synconset.imagepicker": "https://github.com/Telerik-Verified-Plugins/ImagePicker.git"
+        "zone.js": "0.8.12"
     },
     "devDependencies": {
         "@ionic/app-scripts": "1.3.8",
@@ -63,7 +63,7 @@
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
             "com.synconset.imagepicker": {
-                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "Nothing"
+                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
             }
         },
         "platforms": [
