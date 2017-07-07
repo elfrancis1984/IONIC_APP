@@ -78,7 +78,7 @@ export class CargarArchivosProvider {
     };
     let $key = this.af.list(`/${this.POSTS}`).push( post ).key;
     post.$key = $key;
-    this.imagenes.push(post);
+    this.imagenes.unshift(post);
   }
 
   private mostrar_toast(texto:string){

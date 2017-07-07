@@ -10,6 +10,7 @@ import { CargarArchivosProvider } from "../../providers/cargar-archivos/cargar-a
 })
 export class HomePage {
 
+  hayMas:boolean = true;
 
   constructor(public navCtrl: NavController,
               private _cap: CargarArchivosProvider,
@@ -20,5 +21,26 @@ export class HomePage {
   mostrar_modal(){
     let modal = this.modalCtrl.create(SubirPage);
     modal.present();
+  }
+
+  cargar_siguientes(infiniteScroll:any) {
+    console.log('Siguientes...');
+
+    this._cap.cargar_imagenes()
+      .then(
+        (existenMas:boolean)=>{
+          infiniteScroll.complete();
+          this.hayMas = existenMas;
+        }
+      )
+
+    /*setTimeout(() => {
+      for (let i = 0; i < 30; i++) {
+        this.items.push( this.items.length );
+      }
+
+      console.log('Async operation has ended');
+      infiniteScroll.complete();
+    }, 500);*/
   }
 }

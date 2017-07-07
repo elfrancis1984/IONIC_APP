@@ -28,4 +28,8 @@
     <button ion-fab (click)="mostrar_modal()" color="danger"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
+  <ion-infinite-scroll (ionInfinite)="cargar_siguientes($event)" [enabled]="hayMas">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
